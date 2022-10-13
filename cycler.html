@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"   
+          integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
+          integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+      
+      
+    <title>Cycler Page</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+
+        .flex-container {
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+
+            div {
+                width: 33%;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h1> Tejo Lakshmi Tata builds a cycler </h1>
+
+
+    <div class="flex-container" id="target">
+
+        <div class="cycler">row item 1</div>
+        <div class="cycler">row item 2</div>
+        <div class="cycler">row item 3</div>
+    </div>
+    <div class="container">
+        <label for="enter the input">Enter the input</label>
+        <input type="text" id="cycle" value=" ">
+    </div>
+    <!-- <p> Press the button to create an new element of type div and then add it to the container.
+    </p> -->
+    <button type="button" class="btn btn-danger"onclick="makeNewDiv()">Add value</button>
+    <button type="button" class="btn btn-secondary" onclick="get()">get value</button>
+    <button type="button" class="btn btn-primary" onclick="spin()">spin value</button>
+    <!-- <button type="button" class="btn btn-success" onclick="swap()">swap value</button> -->
+
+
+
+</body>
+<script>
+    function makeNewDiv() {
+
+        let element = document.createElement("div")
+        let textname = document.getElementById("cycle").value
+        element.innerHTML = textname
+        element.style.color = "red"
+        element.className = "cycler"
+        var container = document.getElementById("target")
+        container.appendChild(element)
+
+    }
+    function get() {
+        var cyclerItems = document.getElementsByClassName("cycler")
+        var len = cyclerItems.length
+        if (len > 0) {
+            cyclerItems[len - 1].remove();
+        }
+    }
+    function spin() {
+       
+        let cyclerItems = document.getElementsByClassName("cycler")
+        var len = cyclerItems.length
+                if(cyclerItems.length > 1) {
+                    removedItem = cyclerItems[len-1]
+                    cyclerItems[len-1].remove()
+                    let container = document.getElementById("target")
+                    container.insertBefore(removedItem, container.firstChild)
+
+    }
+}
+         function swap(){
+            let cyclerItems = document.getElementsByClassName("cycler")
+            let num1=Math.random()*cyclerItems.length
+            let num2=Math.random()*cyclerItems.length
+            temp=cyclerItems[num1]
+            cyclerItems[num1]=cyclerItems[num2]
+            cyclerItems[num2]=temp
+         }
+
+
+</script>
+
+</html>
